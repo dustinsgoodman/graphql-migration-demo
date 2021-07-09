@@ -1,13 +1,11 @@
 const { mergeResolvers } = require('@graphql-tools/merge')
-const { resolvers: gqlScalarResolvers } = require('graphql-scalars');
+const { URLResolver } = require('graphql-scalars');
 
 module.exports = mergeResolvers([
-  gqlScalarResolvers,
   {
-    Query: {
-      hello: async () => 'Hello World',
-    },
+    URLResolver,
   },
   require('./characterResolvers'),
+  require('./datetimeResolvers'),
   require('./locationResolvers'),
 ]);
